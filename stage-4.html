@@ -1,11 +1,198 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:,">
 <title>MP Adams Plot 3, Eckington - Stage 4: First floor panels</title>
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-<style>body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#f4f5f7;color:#14161a}
-header{background:#17458c;color:#fff;padding:10px 14px}h1{font-size:17px;margin:0}p{margin:4px 0 0;font-size:13px;opacity:.9}
-model-viewer{width:100vw;height:calc(100vh - 110px);background:#fff}nav{display:flex;gap:6px;padding:8px;flex-wrap:wrap}
-nav a{padding:6px 10px;border-radius:4px;background:#e3e8f1;color:#17458c;text-decoration:none;font-size:13px}
-nav a.on{background:#17458c;color:#fff}</style></head><body>
-<header><h1>MP Adams Plot 3, Eckington &mdash; Stage 4 of 5: First floor panels</h1><p>FF panels, head binder and steel over (P3-GA-02).</p></header>
-<model-viewer src="stage-4.glb" camera-controls touch-action="pan-y" auto-rotate shadow-intensity="0.6" exposure="1.05"></model-viewer>
-<nav><a class="" href="stage-1.html">1. Sole plates</a><a class="" href="stage-2.html">2. Ground floor panels + beams over</a><a class="" href="stage-3.html">3. First floor structure</a><a class="on" href="stage-4.html">4. First floor panels</a><a class="" href="stage-5.html">5. Gables + roof</a></nav></body></html>
+<style>
+  :root { --blue:#17458c; --ink:#14161a; --muted:#5b6270; --chip:#e3e8f1; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:#eef0f3; color:var(--ink);
+    font-family:"Segoe UI",-apple-system,Roboto,Arial,sans-serif; overflow:hidden; }
+  #app { display:flex; flex-direction:column; height:100dvh; }
+  header { background:var(--blue); color:#fff; padding:10px 14px 8px; }
+  header .job { font-size:12px; opacity:.8; letter-spacing:.02em; }
+  header h1 { font-size:17px; margin:2px 0 0; font-weight:600; }
+  header p { margin:3px 0 0; font-size:13px; opacity:.9; }
+  #stage { position:relative; flex:1; min-height:0; }
+  canvas { display:block; width:100%; height:100%; touch-action:none; }
+  #tools { position:absolute; top:10px; right:10px; display:flex; flex-direction:column; gap:6px; }
+  #tools button { font:inherit; font-size:13px; padding:7px 10px; border-radius:6px; border:1px solid #c9d0db;
+    background:rgba(255,255,255,.92); color:var(--ink); cursor:pointer; }
+  #tools button[aria-pressed="true"] { background:var(--blue); color:#fff; border-color:var(--blue); }
+  #load { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); background:rgba(255,255,255,.95);
+    padding:12px 16px; border-radius:8px; font-size:14px; box-shadow:0 2px 12px rgba(0,0,0,.12); }
+  #hint { position:absolute; left:10px; bottom:8px; font-size:11px; color:var(--muted); }
+  nav { display:flex; gap:6px; padding:8px 10px calc(8px + env(safe-area-inset-bottom)); overflow-x:auto;
+    background:#fff; border-top:1px solid #d9dee6; }
+  nav button { flex:0 0 auto; font:inherit; font-size:13px; padding:7px 11px; border-radius:6px; border:0;
+    background:var(--chip); color:var(--blue); cursor:pointer; white-space:nowrap; }
+  nav button.on { background:var(--blue); color:#fff; }
+  nav button.done { background:#cfd8e8; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="app">
+  <header>
+    <div class="job">MP Adams Plot 3, Eckington &middot; Timber frame build sequence</div>
+    <h1 id="title">Stage 4: First floor panels</h1>
+    <p id="desc"></p>
+  </header>
+  <div id="stage">
+    <canvas id="c"></canvas>
+    <div id="tools">
+      <button id="fade" aria-pressed="false">Fade earlier stages</button>
+      <button id="edges" aria-pressed="true">Edges</button>
+      <button id="reset">Reset view</button>
+    </div>
+    <div id="load">Loading 3D model&hellip;</div>
+    <div id="hint">Drag to rotate &middot; pinch or scroll to zoom &middot; two fingers or right-drag to pan</div>
+  </div>
+  <nav id="nav"></nav>
+</div>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
+
+const START = 4;
+const canvas = document.getElementById("c");
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf4f5f7);
+const camera = new THREE.PerspectiveCamera(40, 1, 0.05, 2000);
+const controls = new OrbitControls(camera, canvas);
+controls.enableDamping = true;
+controls.dampingFactor = 0.12;
+// SketchUp-like diffuse shading (lights scale LINEAR colour): walls ~1.0x, faces pointing up ~1.5x. Much brighter
+// the model's dark materials out (the crimson screed read as pure red, the plywood deck as white).
+scene.add(new THREE.HemisphereLight(0xffffff, 0x8c9099, 0.85));
+const sun = new THREE.DirectionalLight(0xffffff, 0.85);
+sun.position.set(-0.5, 0.75, 0.45);
+scene.add(sun);
+const fill = new THREE.DirectionalLight(0xffffff, 0.3);
+fill.position.set(0.6, 0.2, -0.8);
+scene.add(fill);
+
+const draco = new DRACOLoader().setDecoderPath("https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/gltf/");
+const loader = new GLTFLoader().setDRACOLoader(draco);
+const loaded = new Map();          // stage n -> THREE.Group
+let manifest, current = START, fade = false, edges = true, framed = false;
+const $ = id => document.getElementById(id);
+
+function prepare(root) {
+  root.traverse(o => {
+    if (o.isLineSegments || o.isLine) {
+      o.material = new THREE.LineBasicMaterial({ color: 0x1b1c1f, transparent: true, opacity: 0.7 });
+      o.userData.edge = true;
+      o.renderOrder = 2;
+    } else if (o.isMesh) {
+      const mats = Array.isArray(o.material) ? o.material : [o.material];
+      o.material = mats.map(m => {
+        // plain diffuse, like SketchUp: no specular (the spec-gloss conversion adds a strong one) and cheap on phones
+        const mm = new THREE.MeshLambertMaterial({ color: m.color, map: m.map, name: m.name,
+          vertexColors: m.vertexColors, opacity: m.opacity, transparent: m.opacity < 1 });
+        mm.side = THREE.DoubleSide;
+        mm.polygonOffset = true; mm.polygonOffsetFactor = 1; mm.polygonOffsetUnits = 1;
+        if (mm.transparent || mm.opacity < 1) mm.depthWrite = false;
+        mm.userData.base = { opacity: mm.opacity, transparent: mm.transparent, color: mm.color?.clone() };
+        return mm;
+      });
+      if (o.material.length === 1) o.material = o.material[0];
+    }
+  });
+}
+
+function styleStage(group, n) {
+  const faded = fade && n < current;
+  group.traverse(o => {
+    if (o.userData.edge) { o.visible = edges; o.material.opacity = faded ? 0.12 : 0.7; return; }
+    if (!o.isMesh) return;
+    for (const m of (Array.isArray(o.material) ? o.material : [o.material])) {
+      const b = m.userData.base;
+      if (faded) { m.transparent = true; m.opacity = 0.18 * b.opacity; m.depthWrite = false; }
+      else { m.transparent = b.transparent; m.opacity = b.opacity; m.depthWrite = !(b.transparent || b.opacity < 1); }
+      m.needsUpdate = true;
+    }
+  });
+}
+
+function loadStage(n) {
+  if (loaded.has(n)) return Promise.resolve(loaded.get(n));
+  const s = manifest.stages[n - 1];
+  return new Promise((res, rej) => loader.load(s.glb, g => {
+    prepare(g.scene); loaded.set(n, g.scene); scene.add(g.scene); res(g.scene);
+  }, ev => {
+    if (ev.total) $("load").textContent = `Loading stage ${n} of ${current}… ${Math.round(100 * ev.loaded / ev.total)}%`;
+  }, rej));
+}
+
+function frame() {
+  const box = new THREE.Box3();
+  for (const [n, g] of loaded) if (n <= current) box.expandByObject(g);
+  if (box.isEmpty()) return;
+  const c = box.getCenter(new THREE.Vector3()), size = box.getSize(new THREE.Vector3());
+  const r = size.length() / 2;
+  const vf = THREE.MathUtils.degToRad(camera.fov / 2), hf = Math.atan(Math.tan(vf) * camera.aspect);
+  const d = r / Math.sin(Math.min(vf, hf)) * 0.95;
+  const dir = new THREE.Vector3(-0.75, 0.55, 1.0).normalize();
+  camera.position.copy(c).addScaledVector(dir, d);
+  camera.near = Math.max(d / 500, 0.01); camera.far = d * 20; camera.updateProjectionMatrix();
+  controls.target.copy(c); controls.update();
+}
+
+async function show(n, push = true) {
+  current = n;
+  const s = manifest.stages[n - 1];
+  $("title").textContent = `Stage ${n} of ${manifest.stages.length}: ${s.title}`;
+  $("desc").textContent = s.desc;
+  document.title = `${manifest.job} - Stage ${n}: ${s.title}`;
+  [...$("nav").children].forEach((b, i) => { b.className = i + 1 === n ? "on" : (i + 1 < n ? "done" : ""); });
+  $("nav").children[n - 1]?.scrollIntoView({ inline: "center", block: "nearest" });
+  if (push) history.replaceState(null, "", `stage-${n}.html`);
+  $("load").hidden = false;
+  try {
+    for (let k = 1; k <= n; k++) await loadStage(k);
+  } catch (e) {
+    $("load").textContent = "Could not load the 3D model. Check the connection and reload.";
+    return;
+  }
+  for (const [k, g] of loaded) { g.visible = k <= n; styleStage(g, k); }
+  $("load").hidden = true;
+  if (!framed) { frame(); framed = true; }
+}
+
+function resize() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(canvas);
+
+$("fade").onclick = e => { fade = !fade; e.target.setAttribute("aria-pressed", fade); show(current, false); };
+$("edges").onclick = e => { edges = !edges; e.target.setAttribute("aria-pressed", edges); show(current, false); };
+$("reset").onclick = () => frame();
+
+manifest = await (await fetch("stages.json", { cache: "no-cache" })).json();
+manifest.stages.forEach(s => {
+  const b = document.createElement("button");
+  b.textContent = `${s.n}. ${s.title}`;
+  b.onclick = () => show(s.n);
+  $("nav").appendChild(b);
+});
+resize();
+show(START, false);
+renderer.setAnimationLoop(() => { controls.update(); renderer.render(scene, camera); });
+window.__viewer = { scene, camera, controls, loaded, show };
+</script>
+</body>
+</html>
