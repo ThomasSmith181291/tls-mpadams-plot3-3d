@@ -131,7 +131,7 @@
  ],
  "download_all": {
   "file": "downloads/MP Adams Plot 3 - Construction Issue C01.zip",
-  "bytes": 20143072,
+  "bytes": 20143051,
   "count": 37,
   "title": "Download everything"
  },
@@ -878,7 +878,7 @@
      "file": "docs/procurement/P3-PR-01 Procurement Schedule C01.pdf",
      "pages": 4,
      "thumb": "thumbs/P3-PR-01.png",
-     "bytes": 158863,
+     "bytes": 158865,
      "number": "P3-PR-01"
     }
    ],
@@ -891,7 +891,7 @@
    "note": "All materials with waste, split by stock size and by section.",
    "zip": {
     "file": "downloads/P3 Procurement.zip",
-    "bytes": 140503,
+    "bytes": 140482,
     "count": 2
    }
   },
