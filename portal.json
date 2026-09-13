@@ -131,7 +131,7 @@
  ],
  "download_all": {
   "file": "downloads/MP Adams Plot 3 - Construction Issue C01.zip",
-  "bytes": 20204552,
+  "bytes": 20206967,
   "count": 37,
   "title": "Download everything"
  },
@@ -230,7 +230,7 @@
      "file": "docs/drawings/P3-GA-01 Ground Floor General Arrangement.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-GA-01.png",
-     "bytes": 1298918,
+     "bytes": 1298904,
      "number": "P3-GA-01",
      "view": "stage-2",
      "view_opts": {}
@@ -254,7 +254,7 @@
      "file": "docs/drawings/P3-GA-02 First Floor General Arrangement.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-GA-02.png",
-     "bytes": 174501,
+     "bytes": 174508,
      "number": "P3-GA-02",
      "view": "stage-4",
      "view_opts": {}
@@ -265,7 +265,7 @@
      "file": "docs/drawings/P3-GA-03 Gable Panels General Arrangement.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-GA-03.png",
-     "bytes": 161479,
+     "bytes": 161482,
      "number": "P3-GA-03",
      "view": "stage-5",
      "view_opts": {}
@@ -427,7 +427,7 @@
      "file": "docs/manufacture/P3-MF GB EX Panels (9).pdf",
      "pages": 9,
      "thumb": "thumbs/P3-MF-GB-EX-Panels-9.png",
-     "bytes": 107440,
+     "bytes": 107436,
      "subtitle": "9 panels, one sheet each",
      "panels": [
       {
@@ -474,7 +474,7 @@
      "file": "docs/manufacture/P3-MF FF EX Panels (22).pdf",
      "pages": 22,
      "thumb": "thumbs/P3-MF-FF-EX-Panels-22.png",
-     "bytes": 252509,
+     "bytes": 252515,
      "subtitle": "22 panels, one sheet each",
      "panels": [
       {
@@ -573,7 +573,7 @@
      "file": "docs/manufacture/P3-MF FF IL Panels (2).pdf",
      "pages": 2,
      "thumb": "thumbs/P3-MF-FF-IL-Panels-2.png",
-     "bytes": 51977,
+     "bytes": 51972,
      "subtitle": "2 panels, one sheet each",
      "panels": [
       {
@@ -671,7 +671,7 @@
      "file": "docs/manufacture/P3-MF GF EX Panels (22).pdf",
      "pages": 22,
      "thumb": "thumbs/P3-MF-GF-EX-Panels-22.png",
-     "bytes": 275525,
+     "bytes": 275531,
      "subtitle": "22 panels, one sheet each",
      "panels": [
       {
@@ -770,7 +770,7 @@
      "file": "docs/manufacture/P3-MF GF IL Panels (7).pdf",
      "pages": 7,
      "thumb": "thumbs/P3-MF-GF-IL-Panels-7.png",
-     "bytes": 91269,
+     "bytes": 91263,
      "subtitle": "7 panels, one sheet each",
      "panels": [
       {
@@ -809,7 +809,7 @@
      "file": "docs/manufacture/P3-MF GF IN Panels (4).pdf",
      "pages": 4,
      "thumb": "thumbs/P3-MF-GF-IN-Panels-4.png",
-     "bytes": 71836,
+     "bytes": 71837,
      "subtitle": "4 panels, one sheet each",
      "panels": [
       {
@@ -834,7 +834,7 @@
    "note": "Panel fabrication drawings, one sheet per panel, set by level and panel type. Tap a panel mark to open its sheet.",
    "zip": {
     "file": "downloads/P3 Fabrication drawings.zip",
-    "bytes": 831157,
+    "bytes": 831269,
     "count": 7
    }
   },
@@ -848,7 +848,7 @@
      "file": "docs/cutting/P3-CP-OSB OSB Cutting Pack C01.pdf",
      "pages": 86,
      "thumb": "thumbs/P3-CP-OSB-OSB-Cutting-Pack-C01.png",
-     "bytes": 984599,
+     "bytes": 984658,
      "number": "P3-CP-OSB"
     },
     {
@@ -857,14 +857,14 @@
      "file": "docs/cutting/P3-CP-PIR PIR Cutting Pack C01.pdf",
      "pages": 55,
      "thumb": "thumbs/P3-CP-PIR-PIR-Cutting-Pack-C01.png",
-     "bytes": 796348,
+     "bytes": 796359,
      "number": "P3-CP-PIR"
     }
    ],
    "note": "OSB and PIR sheets nested for cutting: one stock sheet per page.",
    "zip": {
     "file": "downloads/P3 Cutting packs.zip",
-    "bytes": 1397715,
+    "bytes": 1400028,
     "count": 2
    }
   },
@@ -891,7 +891,7 @@
    "note": "All materials with waste, split by stock size and by section.",
    "zip": {
     "file": "downloads/P3 Procurement.zip",
-    "bytes": 140496,
+    "bytes": 140499,
     "count": 2
    }
   },
@@ -918,7 +918,7 @@
    "note": "The build sequence QR sheet, the 3D stage files, and every construction drawing in one PDF.",
    "zip": {
     "file": "downloads/P3 QR codes + full set.zip",
-    "bytes": 9663933,
+    "bytes": 9663932,
     "count": 8
    }
   }
