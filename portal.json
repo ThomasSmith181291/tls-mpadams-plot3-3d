@@ -131,8 +131,8 @@
  ],
  "download_all": {
   "file": "downloads/MP Adams Plot 3 - Construction Issue C01.zip",
-  "bytes": 17630386,
-  "count": 34,
+  "bytes": 20204552,
+  "count": 37,
   "title": "Download everything"
  },
  "stages": [
@@ -375,6 +375,46 @@
     "file": "downloads/P3 Construction drawings.zip",
     "bytes": 2804893,
     "count": 14
+   }
+  },
+  {
+   "id": "engineering",
+   "title": "Engineer's drawings",
+   "docs": [
+    {
+     "id": "26-431-S-0001",
+     "title": "Timber Frame Details",
+     "file": "docs/engineering/26-431-S-0001 - Plot 3 - Timber Frame Details_P02.pdf",
+     "pages": 1,
+     "thumb": "thumbs/26-431-S-0001.png",
+     "bytes": 1126567,
+     "number": "26-431-S-0001",
+     "subtitle": "Rev P02"
+    },
+    {
+     "id": "26-431-S-0002",
+     "title": "Load Mark-up",
+     "file": "docs/engineering/26-431-S-0002 - Plot 3 - Load Mark-up_P01.pdf",
+     "pages": 1,
+     "thumb": "thumbs/26-431-S-0002.png",
+     "bytes": 1562326,
+     "number": "26-431-S-0002",
+     "subtitle": "Rev P01"
+    },
+    {
+     "id": "2026-05-26-Structural-Issue-Register",
+     "title": "2026-05-26 Structural Issue Register",
+     "file": "docs/engineering/2026-05-26 Structural Issue Register.pdf",
+     "pages": 1,
+     "thumb": "thumbs/2026-05-26-Structural-Issue-Register.png",
+     "bytes": 184691
+    }
+   ],
+   "note": "Structural engineer's drawings and issue register, as received.",
+   "zip": {
+    "file": "downloads/P3 Engineers drawings.zip",
+    "bytes": 2573960,
+    "count": 3
    }
   },
   {
