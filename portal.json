@@ -131,7 +131,7 @@
  ],
  "download_all": {
   "file": "downloads/MP Adams Plot 3 - Construction Issue C01.zip",
-  "bytes": 20199948,
+  "bytes": 20137104,
   "count": 37,
   "title": "Download everything"
  },
@@ -373,7 +373,7 @@
    "note": "A3 construction issue. Each sheet's title block QR opens it here.",
    "zip": {
     "file": "downloads/P3 Construction drawings.zip",
-    "bytes": 2804895,
+    "bytes": 2804887,
     "count": 14
    }
   },
@@ -834,7 +834,7 @@
    "note": "Panel fabrication drawings, one sheet per panel, set by level and panel type. Tap a panel mark to open its sheet.",
    "zip": {
     "file": "downloads/P3 Fabrication drawings.zip",
-    "bytes": 826591,
+    "bytes": 826596,
     "count": 7
    }
   },
@@ -848,7 +848,7 @@
      "file": "docs/cutting/P3-CP-OSB OSB Cutting Pack C01.pdf",
      "pages": 86,
      "thumb": "thumbs/P3-CP-OSB.png",
-     "bytes": 984657,
+     "bytes": 945781,
      "number": "P3-CP-OSB"
     },
     {
@@ -857,14 +857,14 @@
      "file": "docs/cutting/P3-CP-PIR PIR Cutting Pack C01.pdf",
      "pages": 55,
      "thumb": "thumbs/P3-CP-PIR.png",
-     "bytes": 795720,
+     "bytes": 769319,
      "number": "P3-CP-PIR"
     }
    ],
    "note": "OSB and PIR sheets nested for cutting: one stock sheet per page.",
    "zip": {
     "file": "downloads/P3 Cutting packs.zip",
-    "bytes": 1397685,
+    "bytes": 1334842,
     "count": 2
    }
   },
@@ -918,7 +918,7 @@
    "note": "The build sequence QR sheet, the 3D stage files, and every construction drawing in one PDF.",
    "zip": {
     "file": "downloads/P3 QR codes + full set.zip",
-    "bytes": 9663933,
+    "bytes": 9663935,
     "count": 8
    }
   }
