@@ -131,7 +131,7 @@
  ],
  "download_all": {
   "file": "downloads/MP Adams Plot 3 - Construction Issue C01.zip",
-  "bytes": 20137104,
+  "bytes": 20143072,
   "count": 37,
   "title": "Download everything"
  },
@@ -219,7 +219,7 @@
      "file": "docs/drawings/P3-SP-01 Ground Floor Sole Plate Setting Out.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-SP-01.png",
-     "bytes": 167863,
+     "bytes": 167862,
      "number": "P3-SP-01",
      "view": "stage-1",
      "view_opts": {}
@@ -230,7 +230,7 @@
      "file": "docs/drawings/P3-GA-01 Ground Floor General Arrangement.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-GA-01.png",
-     "bytes": 1298904,
+     "bytes": 1298898,
      "number": "P3-GA-01",
      "view": "stage-2",
      "view_opts": {}
@@ -241,7 +241,7 @@
      "file": "docs/drawings/P3-FL-01 First Floor Structure.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-FL-01.png",
-     "bytes": 166918,
+     "bytes": 166914,
      "number": "P3-FL-01",
      "view": "stage-3",
      "view_opts": {
@@ -254,7 +254,7 @@
      "file": "docs/drawings/P3-GA-02 First Floor General Arrangement.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-GA-02.png",
-     "bytes": 174508,
+     "bytes": 174504,
      "number": "P3-GA-02",
      "view": "stage-4",
      "view_opts": {}
@@ -265,7 +265,7 @@
      "file": "docs/drawings/P3-GA-03 Gable Panels General Arrangement.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-GA-03.png",
-     "bytes": 161482,
+     "bytes": 161476,
      "number": "P3-GA-03",
      "view": "stage-5",
      "view_opts": {}
@@ -276,7 +276,7 @@
      "file": "docs/drawings/P3-RF-01 Roof Ceiling Level.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-RF-01.png",
-     "bytes": 156992,
+     "bytes": 156986,
      "number": "P3-RF-01",
      "view": "stage-5",
      "view_opts": {}
@@ -287,7 +287,7 @@
      "file": "docs/drawings/P3-RF-02 Roof Truss Layout.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-RF-02.png",
-     "bytes": 157184,
+     "bytes": 157179,
      "number": "P3-RF-02",
      "view": "stage-5",
      "view_opts": {}
@@ -309,7 +309,7 @@
      "file": "docs/drawings/P3-SE-01 Section A-A.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-SE-01.png",
-     "bytes": 157655,
+     "bytes": 157654,
      "number": "P3-SE-01",
      "view": "section-A",
      "view_opts": {}
@@ -331,7 +331,7 @@
      "file": "docs/drawings/P3-EL-01 Front Elevation.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-EL-01.png",
-     "bytes": 177228,
+     "bytes": 177224,
      "number": "P3-EL-01",
      "view": "elev-S",
      "view_opts": {}
@@ -342,7 +342,7 @@
      "file": "docs/drawings/P3-EL-02 Side Elevation East.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-EL-02.png",
-     "bytes": 184137,
+     "bytes": 184134,
      "number": "P3-EL-02",
      "view": "elev-E",
      "view_opts": {}
@@ -353,7 +353,7 @@
      "file": "docs/drawings/P3-EL-03 Rear Elevation.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-EL-03.png",
-     "bytes": 176927,
+     "bytes": 176922,
      "number": "P3-EL-03",
      "view": "elev-N",
      "view_opts": {}
@@ -364,7 +364,7 @@
      "file": "docs/drawings/P3-EL-04 Side Elevation West.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-EL-04.png",
-     "bytes": 184041,
+     "bytes": 184038,
      "number": "P3-EL-04",
      "view": "elev-W",
      "view_opts": {}
@@ -373,7 +373,7 @@
    "note": "A3 construction issue. Each sheet's title block QR opens it here.",
    "zip": {
     "file": "downloads/P3 Construction drawings.zip",
-    "bytes": 2804887,
+    "bytes": 2804873,
     "count": 14
    }
   },
@@ -834,7 +834,7 @@
    "note": "Panel fabrication drawings, one sheet per panel, set by level and panel type. Tap a panel mark to open its sheet.",
    "zip": {
     "file": "downloads/P3 Fabrication drawings.zip",
-    "bytes": 826596,
+    "bytes": 826594,
     "count": 7
    }
   },
@@ -848,7 +848,7 @@
      "file": "docs/cutting/P3-CP-OSB OSB Cutting Pack C01.pdf",
      "pages": 86,
      "thumb": "thumbs/P3-CP-OSB.png",
-     "bytes": 945781,
+     "bytes": 945700,
      "number": "P3-CP-OSB"
     },
     {
@@ -857,14 +857,14 @@
      "file": "docs/cutting/P3-CP-PIR PIR Cutting Pack C01.pdf",
      "pages": 55,
      "thumb": "thumbs/P3-CP-PIR.png",
-     "bytes": 769319,
+     "bytes": 769227,
      "number": "P3-CP-PIR"
     }
    ],
    "note": "OSB and PIR sheets nested for cutting: one stock sheet per page.",
    "zip": {
     "file": "downloads/P3 Cutting packs.zip",
-    "bytes": 1334842,
+    "bytes": 1340805,
     "count": 2
    }
   },
@@ -891,7 +891,7 @@
    "note": "All materials with waste, split by stock size and by section.",
    "zip": {
     "file": "downloads/P3 Procurement.zip",
-    "bytes": 140497,
+    "bytes": 140503,
     "count": 2
    }
   },
@@ -905,7 +905,7 @@
      "file": "docs/issue/P3-QR-01 Build Sequence QR Codes.pdf",
      "pages": 1,
      "thumb": "thumbs/P3-QR-01.png",
-     "bytes": 205781,
+     "bytes": 205776,
      "number": "P3-QR-01"
     }
    ],
@@ -918,7 +918,7 @@
    "note": "The build sequence QR sheet, the 3D stage files, and every construction drawing in one PDF.",
    "zip": {
     "file": "downloads/P3 QR codes + full set.zip",
-    "bytes": 9663935,
+    "bytes": 9663925,
     "count": 8
    }
   }
