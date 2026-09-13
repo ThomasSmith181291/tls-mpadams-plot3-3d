@@ -6,36 +6,72 @@
    "n": 1,
    "title": "Sole plates",
    "desc": "Ground floor sole plates set out and fixed on the DPC (P3-SP-01).",
-   "glb": "stage-1.glb",
-   "bytes": 60688
+   "files": [
+    {
+     "glb": "stage-1.glb",
+     "part": null,
+     "label": null,
+     "bytes": 60688
+    }
+   ]
   },
   {
    "n": 2,
    "title": "Ground floor panels + beams over",
    "desc": "GF panels, head binder, glulam beams and steel over (P3-GA-01).",
-   "glb": "stage-2.glb",
-   "bytes": 4147116
+   "files": [
+    {
+     "glb": "stage-2.glb",
+     "part": null,
+     "label": null,
+     "bytes": 4147116
+    }
+   ]
   },
   {
    "n": 3,
    "title": "First floor structure",
    "desc": "Edgebinder, metal-web joists, strongbacks, hangers and 22mm deck (P3-FL-01).",
-   "glb": "stage-3.glb",
-   "bytes": 9123520
+   "files": [
+    {
+     "glb": "stage-3.glb",
+     "part": null,
+     "label": null,
+     "bytes": 5114492
+    },
+    {
+     "glb": "stage-3-deck.glb",
+     "part": "deck",
+     "label": "Deck",
+     "bytes": 4005960
+    }
+   ]
   },
   {
    "n": 4,
    "title": "First floor panels",
    "desc": "FF panels, head binder and steel over (P3-GA-02).",
-   "glb": "stage-4.glb",
-   "bytes": 203304
+   "files": [
+    {
+     "glb": "stage-4.glb",
+     "part": null,
+     "label": null,
+     "bytes": 203304
+    }
+   ]
   },
   {
    "n": 5,
    "title": "Gables + roof",
    "desc": "Gable panels, attic trusses and cut roof (P3-GA-03, P3-RF-01..03).",
-   "glb": "stage-5.glb",
-   "bytes": 123692
+   "files": [
+    {
+     "glb": "stage-5.glb",
+     "part": null,
+     "label": null,
+     "bytes": 123692
+    }
+   ]
   }
  ]
 }

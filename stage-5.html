@@ -21,6 +21,10 @@
   #tools button { font:inherit; font-size:13px; padding:7px 10px; border-radius:6px; border:1px solid #c9d0db;
     background:rgba(255,255,255,.92); color:var(--ink); cursor:pointer; }
   #tools button[aria-pressed="true"] { background:var(--blue); color:#fff; border-color:var(--blue); }
+  #parts { display:flex; flex-direction:column; gap:6px; }
+  #parts:empty { display:none; }
+  #parts button { font-weight:600; font-size:14px; padding:9px 12px; }
+  #parts button[aria-pressed="false"] { background:#fff; color:var(--blue); border:2px solid var(--blue); }
   #load { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); background:rgba(255,255,255,.95);
     padding:12px 16px; border-radius:8px; font-size:14px; box-shadow:0 2px 12px rgba(0,0,0,.12); }
   #hint { position:absolute; left:10px; bottom:8px; font-size:11px; color:var(--muted); }
@@ -48,6 +52,7 @@
   <div id="stage">
     <canvas id="c"></canvas>
     <div id="tools">
+      <div id="parts"></div>
       <button id="fade" aria-pressed="false">Fade earlier stages</button>
       <button id="edges" aria-pressed="true">Edges</button>
       <button id="reset">Reset view</button>
@@ -86,7 +91,8 @@ scene.add(fill);
 
 const draco = new DRACOLoader().setDecoderPath("https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/libs/draco/gltf/");
 const loader = new GLTFLoader().setDRACOLoader(draco);
-const loaded = new Map();          // stage n -> THREE.Group
+const loaded = new Map();          // glb file -> { group, stage, part }
+const partOn = {};                 // switchable part key -> shown?
 let manifest, current = START, fade = false, edges = true, framed = false;
 const $ = id => document.getElementById(id);
 
@@ -127,19 +133,47 @@ function styleStage(group, n) {
   });
 }
 
-function loadStage(n) {
-  if (loaded.has(n)) return Promise.resolve(loaded.get(n));
-  const s = manifest.stages[n - 1];
-  return new Promise((res, rej) => loader.load(s.glb, g => {
-    prepare(g.scene); loaded.set(n, g.scene); scene.add(g.scene); res(g.scene);
+function stageFiles(s) {
+  return s.files || [{ glb: s.glb, part: null }];          // older stages.json: one file per stage
+}
+
+function loadFile(n, f) {
+  if (loaded.has(f.glb)) return Promise.resolve(loaded.get(f.glb));
+  return new Promise((res, rej) => loader.load(f.glb, g => {
+    prepare(g.scene); scene.add(g.scene);
+    const rec = { group: g.scene, stage: n, part: f.part };
+    loaded.set(f.glb, rec); res(rec);
   }, ev => {
     if (ev.total) $("load").textContent = `Loading stage ${n} of ${current}… ${Math.round(100 * ev.loaded / ev.total)}%`;
   }, rej));
 }
 
+function updateParts() {
+  // one on/off button per switchable part (e.g. Deck) in the stages on screen
+  const here = new Map();
+  for (const s of manifest.stages.slice(0, current))
+    for (const f of stageFiles(s)) if (f.part) here.set(f.part, f.label || f.part);
+  const box = $("parts");
+  box.replaceChildren(...[...here].map(([key, label]) => {
+    if (!(key in partOn)) partOn[key] = true;
+    const b = document.createElement("button");
+    b.setAttribute("aria-pressed", partOn[key]);
+    b.textContent = `${label}: ${partOn[key] ? "ON" : "OFF"}`;
+    b.onclick = () => { partOn[key] = !partOn[key]; applyVisibility(); updateParts(); };
+    return b;
+  }));
+}
+
+function applyVisibility() {
+  for (const r of loaded.values()) {
+    r.group.visible = r.stage <= current && (!r.part || partOn[r.part] !== false);
+    styleStage(r.group, r.stage);
+  }
+}
+
 function frame() {
   const box = new THREE.Box3();
-  for (const [n, g] of loaded) if (n <= current) box.expandByObject(g);
+  for (const r of loaded.values()) if (r.stage <= current) box.expandByObject(r.group);
   if (box.isEmpty()) return;
   const c = box.getCenter(new THREE.Vector3()), size = box.getSize(new THREE.Vector3());
   const r = size.length() / 2;
@@ -161,13 +195,14 @@ async function show(n, push = true) {
   $("nav").children[n - 1]?.scrollIntoView({ inline: "center", block: "nearest" });
   if (push) history.replaceState(null, "", `stage-${n}.html`);
   $("load").hidden = false;
+  updateParts();
   try {
-    for (let k = 1; k <= n; k++) await loadStage(k);
+    for (let k = 1; k <= n; k++) for (const f of stageFiles(manifest.stages[k - 1])) await loadFile(k, f);
   } catch (e) {
     $("load").textContent = "Could not load the 3D model. Check the connection and reload.";
     return;
   }
-  for (const [k, g] of loaded) { g.visible = k <= n; styleStage(g, k); }
+  applyVisibility();
   $("load").hidden = true;
   if (!framed) { frame(); framed = true; }
 }
