@@ -131,7 +131,7 @@
  ],
  "download_all": {
   "file": "downloads/MP Adams Plot 3 - Construction Issue C01.zip",
-  "bytes": 20206967,
+  "bytes": 20202287,
   "count": 37,
   "title": "Download everything"
  },
@@ -573,7 +573,7 @@
      "file": "docs/manufacture/P3-MF FF IL Panels (2).pdf",
      "pages": 2,
      "thumb": "thumbs/P3-MF-FF-IL-Panels-2.png",
-     "bytes": 51972,
+     "bytes": 51608,
      "subtitle": "2 panels, one sheet each",
      "panels": [
       {
@@ -592,7 +592,7 @@
      "file": "docs/manufacture/P3-MF FF IN Panels (17).pdf",
      "pages": 17,
      "thumb": "thumbs/P3-MF-FF-IN-Panels-17.png",
-     "bytes": 166265,
+     "bytes": 163144,
      "subtitle": "17 panels, one sheet each",
      "panels": [
       {
@@ -770,7 +770,7 @@
      "file": "docs/manufacture/P3-MF GF IL Panels (7).pdf",
      "pages": 7,
      "thumb": "thumbs/P3-MF-GF-IL-Panels-7.png",
-     "bytes": 91263,
+     "bytes": 89996,
      "subtitle": "7 panels, one sheet each",
      "panels": [
       {
@@ -809,7 +809,7 @@
      "file": "docs/manufacture/P3-MF GF IN Panels (4).pdf",
      "pages": 4,
      "thumb": "thumbs/P3-MF-GF-IN-Panels-4.png",
-     "bytes": 71837,
+     "bytes": 71099,
      "subtitle": "4 panels, one sheet each",
      "panels": [
       {
@@ -834,7 +834,7 @@
    "note": "Panel fabrication drawings, one sheet per panel, set by level and panel type. Tap a panel mark to open its sheet.",
    "zip": {
     "file": "downloads/P3 Fabrication drawings.zip",
-    "bytes": 831269,
+    "bytes": 826589,
     "count": 7
    }
   },
